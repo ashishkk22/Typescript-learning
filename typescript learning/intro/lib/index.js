@@ -1,25 +1,23 @@
 "use strict";
-let regExp = new RegExp("ab+c");
-let set = new Set([1, 2, 3]);
-let array = [1, 2, 3];
-/** A first in first out collection */
-class Queue {
-    constructor() {
-        this.data = [];
-    }
-    push(item) {
-        this.data.push(item);
-    }
-    pop() {
-        return this.data.shift();
-    }
-}
-let queue = new Queue();
-//Array
-let arr = [];
-//OR
-let arr2 = [];
-arr2 = [1];
+// let regExp: RegExp = new RegExp("ab+c");
+// let set: Set<number> = new Set([1, 2, 3]);
+// let array: Array<number> = [1, 2, 3];
+// /** A first in first out collection */
+// class Queue<T> {
+//   private data: Array<T> = [];
+//   push(item: T) {
+//     this.data.push(item);
+//   }
+//   pop(): T | undefined {
+//     return this.data.shift();
+//   }
+// }
+// let queue: Queue<number> = new Queue();
+// //Array
+// let arr: Array<number> = [];
+// //OR
+// let arr2: number[] = [];
+// arr2 = [1];
 // arr2 = ["ashish"]; //error
 // //array of fixed length
 // let tuple : [number,number ] = [0,0]
@@ -86,11 +84,118 @@ arr2 = [1];
 //     /**.... */
 // }
 // takesPoint3D(point2D) //error
-class Animal {
-    constructor(name) {
-        this.name = name;
-    }
-    move(distanceInMeters) {
-        console.log(`${this.name} moved ${this.distanceMeters} m.`);
-    }
+// // class in typescript
+// class Animal {
+//  private name: string; //with this outside access is going to be error
+//   constructor(name: string) {
+//     this.name = name;
+//   }
+//   move(distanceInMeters: number): void {
+//     console.log(`${this.name} moved ${distanceInMeters} m.`);
+//   }
+// }
+// let cat = new Animal("cat");
+// cat.move(10);
+// cat.name = "Dog" //GIVE ERROR TSC
+// class Animal {
+//   protected name: string; //with this outside access is going to be error
+//   constructor(name: string) {
+//     this.name = name;
+//   }
+//   move(distanceInMeters: number): void {
+//     console.log(`${this.name} moved ${distanceInMeters} m.`);
+//   }
+// }
+// class Fly extends Animal {
+//   fly(distanceInMeters: number) {
+//     console.log(this.name, "flew", distanceInMeters);
+//   }
+// }
+// let eagle = new Fly("Eagle");
+// eagle.fly(10);
+//generics
+/** A FIFO (first in first out ) collection */
+// class Queue {
+//   data = [];
+//   push(item) {
+//     this.data.push(item);
+//   }
+//   pop() {
+//     return this.data.shift();
+//   }
+// } // so this is general type =
+// if we use it for the string we will get the run time error
+// class NumberQueue extends Queue {
+//   push(item: number) {
+//     super.push(item);
+//   }
+//   pop(): number {
+//     return super.pop();
+//   }
+// }
+// let queueAk = new NumberQueue();
+// queueAk.push(123);
+// console.log(queueAk.pop().toPrecision());
+// class Queue<T> {
+//   data : T[] = [];
+//   push(item: T) :void {
+//     this.data.push(item);
+//   }
+//   pop(): T | undefined{
+//     return this.data.shift();
+//   }
+// }
+// class Queue<T> {
+//   data : Array<T> = [];
+//   push(item: T) :void {
+//     this.data.push(item);
+//   }
+//   pop(): T {
+//     return this.data.shift()!; //if array is empty then return undefined
+//     // exclude undefined ! from the type checking
+//   }
+// }
+// const akQueue = new Queue<number>();
+// akQueue.push(123);
+// let expAny : any;
+// let expUnknown : unknown;
+// //any
+// expAny = "ak"
+// expAny = 22;
+// //unknown
+// expUnknown = "ak"
+// expUnknown = 221
+// //any
+// expAny.allows.anything.you.can.imagine(); //no error we can do anything
+// let anySetBool : boolean = expAny;
+// //so with the any we can do any thing or we can say bypass the type checking
+// //unknown is relatively safer from the any
+// expUnknown.trim() //error
+// let akBool : boolean = expUnknown //error
+// //to bypass the error of unknown
+// if(typeof expUnknown === "string"){
+//   expUnknown.trim(); //no error
+// }
+// if(typeof expUnknown === "boolean"){
+//   let akBool: boolean = expUnknown;  // no error
+// }
+//if we have to log all the thing but if we accept the any value then there is not type safety
+//to do we can use the unknown
+// function log(value: unknown) {
+//   if (typeof value === "number") {
+//     console.log(value.toPrecision(2));
+//   } else {
+//     console.log(value);
+//   }
+// }
+function load() {
+    return "";
 }
+let hello = load();
+//here we don't know what has hello because it is unknown type
+//we can add the condition of type of but we don't have to include it due to performance reason or to save the time
+// const trimmed = hello.trim()
+const trimmed1 = hello.trim();
+//or
+//but this does not work in the tsx
+const trimmed = hello.trim();
