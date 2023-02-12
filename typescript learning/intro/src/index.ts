@@ -226,16 +226,24 @@
 //   }
 // }
 
-function load(): unknown {
-  return "";
-}
-let hello = load();
+// function load(): unknown {
+//   return "";
+// }
+// let hello = load();
 
-//here we don't know what has hello because it is unknown type
-//we can add the condition of type of but we don't have to include it due to performance reason or to save the time
-// const trimmed = hello.trim()
+// //here we don't know what has hello because it is unknown type
+// //we can add the condition of type of but we don't have to include it due to performance reason or to save the time
+// // const trimmed = hello.trim()
 
-const trimmed1 = (hello as string).trim();
-//or
-//but this does not work in the tsx
-const trimmed = (<string>hello).trim();
+// const trimmed1 = (hello as string).trim();
+// //or
+// //but this does not work in the tsx
+// const trimmed = (<string>hello).trim();
+
+// let leet;
+
+// //later
+// leet = "22"
+
+// const number1 = leet as number; //error
+// const number = +leet; // no error convert in number coercion
