@@ -1,5 +1,5 @@
 {
-  "name": "intro",
+  "name": "typescript-learning",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,9 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@types/node": "^18.13.0",
-    "npm-package": "^1.0.0",
+  "devDependencies": {
     "typescript": "^4.9.5"
   }
 }

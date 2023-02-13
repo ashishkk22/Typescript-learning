@@ -1,5 +1,8 @@
 // let regExp: RegExp = new RegExp("ab+c");
 
+import { type } from "os";
+import { findConfigFile, NumericLiteral } from "typescript";
+
 // let set: Set<number> = new Set([1, 2, 3]);
 // let array: Array<number> = [1, 2, 3];
 
@@ -247,3 +250,419 @@
 
 // const number1 = leet as number; //error
 // const number = +leet; // no error convert in number coercion
+
+// import { isPalindrome } from "./utils";
+// console.log(isPalindrome("madam")); //true
+// console.log(isPalindrome("madan")); //false
+
+// console.log("Logged in user", process.env.USER);
+
+// import fs from "fs";
+// fs.writeFileSync("hello.txt", "hello world");
+
+// // import { isPalindrome } from "npm-package";
+
+// const main = () => {
+//   setTimeout(() => {
+//     console.log("1s");
+//     setTimeout(() => {
+//       console.log("2s");
+//       setTimeout(() => {
+//         console.log("3s");
+//       }, 1000);
+//     }, 1000);
+//   }, 1000);
+// };
+// main();
+
+// const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+// const mainAsync = async () => {
+//   await delay(1000);
+//   console.log("1s");
+//   await delay(1000);
+//   console.log("2s");
+//   await delay(1000);
+//   console.log("3s");
+// };
+// mainAsync();
+
+// let mes: string = "hello world";
+// console.log(mes);
+
+//to run the ts file
+//we can install the ts-node package and then npm i ts-node
+
+// class Person {
+//   private _age: number;
+//   constructor(_age: number) {
+//     this._age = _age;
+//   }
+//   growOld = () => {
+//     this._age++;
+//   };
+//   age() {
+//     return this._age;
+//   }
+// }
+
+// const person = new Person(0);
+// const personOld  = person.growOld();
+// personOld();
+
+// typeReadOnly
+// type Point = {
+//   readonly x: number,
+//   y:number
+// }
+
+// const point : Point = {
+//   x:0,
+//   y:0
+// }
+// point.x = 12; //error because it is only readonly
+
+// class Animal{
+//   readonly name : string;
+//   constructor(name : string){
+//     this.name = name;
+//   }
+// }
+// let newAnimal = new Animal("lion");
+// console.log(newAnimal.name)
+// newAnimal.name = "elephant"; //error we can't edit it
+
+/**
+//  * @param input a command or an array of commands
+//  * @returns a single trimmed string
+//  */
+// type Format = string | string[]
+// function formatCommandLine(input : string | string[]){
+//   let line = "";
+//   if(typeof input === "string"){
+//     line = input.trim();
+//   }else{
+//     line = input.map(x => x.trim()).join(' ');
+//   }
+//   return line;
+// }
+// formatCommandLine(12) //map is not fn error is not going to come
+// //because typescript is going to give the error
+
+// let direction :"North" | "south" | "east" | "west";
+// direction  = "NOrth";
+// direction = "n0R7h"
+//here we can update the value of any type
+
+// let code : "vs";
+// code = "vs";
+// code = "sublime" //error we can't take anything other than vs
+
+// class Cat {
+//   meow() {
+//     console.log("meow");
+//   }
+// }
+
+// class Dog {
+//   bark() {
+//     console.log("woof");
+//   }
+// }
+
+// type Animal = Cat | Dog;
+
+// function speak(animal: Animal) {
+//   //here we can't use the typeof operator in the animal
+//   //because it is going to ne string
+//   //so we can do with instanceof to check the type of instance
+//   if (animal instanceof Cat) {
+//     animal.meow();
+//   }
+//   if (animal instanceof Dog) {
+//     animal.bark();
+//   }
+// }
+
+// type Square = {
+//   size : number;
+// }
+// type Rectangle = {
+//   width : number,
+//   height : number
+// }
+
+// type Shape = Square | Rectangle;
+
+// function area(shape : Shape){
+//   if("size" in shape){
+//     return shape.size * shape.size;
+//   }
+//   if("width" in shape){
+//     return shape.width * shape.height
+//   }
+// }
+// area({size:2}); //4
+// area({height:2,width:4}); //8
+
+// type Square = {
+//   size : number;
+// }
+// type Rectangle = {
+//   width : number,
+//   height : number
+// }
+
+// type Shape = Square | Rectangle;
+
+// function area(shape : Shape){
+//   if("size" in shape){
+//     return shape.size * shape.size;
+//   }
+//   if("width" in shape){
+//     return shape.width * shape.height
+//   }
+// }
+// area({size:2}); //4
+// area({height:2,width:4}); //8
+
+// type ValidationSuccess = {
+//   isValid: true;
+//   validatedValue: string;
+// };
+
+// type ValidationFailure = {
+//   isValid: false;
+//   errorReason: string;
+// };
+
+// type ValidationResult = ValidationFailure | ValidationSuccess;
+
+// function logResult(result: ValidationResult) {
+//   if (result.isValid) {
+//     console.log("success, validated value", result.validatedValue);
+//   }
+//   if (result.isValid === false) {
+//     console.log(result.errorReason);
+//   }
+// }
+
+// //with typescript we can directly declare the property in the constructor itself
+// class Person {
+//   constructor(public name: string, public age: number) {}
+// }
+
+// console.log(null == null); //true (of course)
+// console.log(undefined == undefined); //true (of course)
+
+// console.log(undefined == null) //true
+
+// console.log(false == null) //false
+// console.log(0 == null) //false
+// console.log(" " == null) //false
+
+// const result = someBooleanOrNullOrUndefined();
+// if(result == null){
+//   console.log("Null or Undefined ",result); // null | undefined
+// }
+// if(result != null){
+//   console.log("Boolean", result) //true | false
+// }
+
+// type Point2D = {
+//   x : number,
+//   y : number
+// }
+// type Point3D = {
+//   x : number,
+//   y : number,
+//   z : number
+// } // instead of this
+
+// type Point3DD = Point2D & {
+//   z: number;
+// };
+
+type Person = {
+  name: string;
+  email: string;
+  phone?: number; //optional
+};
+
+const Ak: Person = {
+  name: "ashish",
+  email: "ashishkachhadiya22@gmail.com",
+  phone: 8849930484,
+};
+
+// const bruce: Person = {
+//   name: "bruce",
+//   email: "bruce@gmail.com",
+// }; //valid
+
+// class Point {
+//   x?: number;
+//   y?: number;
+// }
+
+// const point = new Point();
+// console.log(point.x); //undefined add automatically for optional member
+// //but we can't add null to the optional member
+
+// type Point = {
+//   x: number;
+//   y: number;
+// };
+// function initialize(): Point {
+//   return {
+//     x: 0,
+//     y: 0,
+//   };
+// }
+// const point = initialize();
+// console.log("After initialized", point.x, point.y);
+// // or we can do like this
+
+// interface Point2D{
+//   x : number,
+//   y : number
+// }
+// interface Point3D extends Point2D{
+//   z : number
+// }
+// export const point : Point3D = {
+//   x:0,
+//   y:0,
+//   z:0
+// }
+// Express Base
+// export interface Request {
+//   body : any;
+// }
+
+// //Express JSON
+// export interface Request{
+//   json : any;
+// }
+
+// //our app
+// function handleRequest(req:Request){
+//   req.body;
+//   req.json
+// }
+//so this type of merging is not supported in the alias so if we are dealing with the http then we have to use the interface
+
+export interface InputProps {
+  type: "text" | "email";
+  value: string;
+  onChange: (newValue: string) => void;
+}
+
+type InputOnChange = (newValue: string) => void;
+type InputValue = string;
+export type InputProp = {
+  type: "text" | "email";
+  value: InputValue;
+  onChange: InputOnChange;
+};
+export type InputProp2 = {
+  type: "text" | "email";
+  value: string;
+  onChange: (newValue: string) => void;
+};
+
+const fail = (mes: string) => {
+  throw Error(mes);
+};
+
+type Square = {
+  kind: "square";
+  size: number;
+};
+
+type Rectangle = {
+  kind: "rectangle";
+  width: number;
+  height: number;
+};
+type Circle = {
+  kind: "circle";
+  radius: number;
+};
+type Shape = Square | Rectangle | Circle;
+
+function area(s: Shape) {
+  if (s.kind === "square") {
+    return s.size * s.size;
+  } else if (s.kind === "rectangle") {
+    return s.width * s.height;
+  } else if (s.kind === "circle") {
+    return Math.PI * s.radius ** 2;
+  }
+  const ensureAllCasesAreHandled: never = s;
+  return ensureAllCasesAreHandled;
+}
+
+//implements Keyword
+type Animal = {
+  name: string;
+  voice(): string;
+};
+
+class Cat implements Animal {
+  constructor(public name: string) {}
+  voice() {
+    return "meow";
+  }
+}
+class Dog implements Animal {
+  constructor(public name: string) {}
+  voice() {
+    return "Woef";
+  }
+}
+
+console.log(new Cat("cat"));
+console.log(new Dog("dog"));
+
+let dice!: number; //definite assignment assertion
+function rollDice() {
+  dice = Math.floor(Math.random() * 6) + 1;
+}
+rollDice();
+
+console.log("current Dice value", dice);
+
+class Point {
+  x!: number;
+  y!: number;
+  constructor() {
+    this.moveRandom();
+  }
+  moveRandom() {
+    this.x = Math.random();
+    this.y = Math.random();
+  }
+}
+
+// function isSquare(shape : Shape):shape is Square{
+//   return 'size' in shape;
+// }
+// function isRectangle(shape: Shape): shape is Square {
+//   return "size" in shape;
+// }
+// if(isRectangle(shape)){
+//   return shape.size * shape.size;
+// }
+
+//assertion function
+// type Person1 = {
+//   name : string,
+//   dataOfBirth?: Date;
+// }
+// function assert(condition : unknown , message : string){
+//   if(!condition) throw new Error(message);
+// }
+
+// const mayBePerson = loadPerson();
+// assert(mayBePerson != null, "could not load person");
+// console.log("Name ", mayBePerson.name);
